@@ -36,15 +36,6 @@ resource "aws_iam_user_group_membership" "user-group-membership" {
   ]
 }
 
-resource "aws_iam_user_login_profile" "credentials" {
-  user    = aws_iam_user.admin-user.name
-  pgp_key = "keybase:your_keybase_username"
-}
-
-output "encrypted_password" {
-  value = aws_iam_user_login_profile.credentials.encrypted_password
-}
-
 
 # resource "aws_iam_group_policy" "admin_policy" {
 #   name  = "admin_policy"
