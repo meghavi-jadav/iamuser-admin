@@ -21,7 +21,7 @@ resource "aws_iam_group_policy_attachment" "test-attach" {
 }
 
 resource "aws_iam_user" "admin-user" {
-  name = "admin-1"
+  name = "admin-2"
 
   tags = {
     Department = "Admin"
