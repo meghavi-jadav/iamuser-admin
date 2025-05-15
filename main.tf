@@ -36,6 +36,24 @@ resource "aws_iam_user_group_membership" "user-group-membership" {
   ]
 }
 
+resource "aws_iam_user_login_profile" "credentials" {
+  user    = aws_iam_user.admin-user.name
+}
+
+resource "aws_iam_virtual_mfa_device" "example_mfa_device" {
+    #  user_name = aws_iam_user.admin-user.name
+     virtual_mfa_device_name = "mfa"
+   }
+
+output "qr_code_png" {
+    value = aws_iam_virtual_mfa_device.example_mfa_device.qr_code_png
+}
+
+output "base_32_string_seed" {
+    value = aws_iam_virtual_mfa_device.example_mfa_device.base_32_string_seed
+}
+
+
 # resource "aws_iam_group_policy" "admin_policy" {
 #   name  = "admin_policy"
 #   group = aws_iam_group.administration.name
